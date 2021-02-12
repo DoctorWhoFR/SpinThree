@@ -9,9 +9,6 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 	<style>
-		body {
-			background-color: black;
-		}
 
 		.test {
 			position: absolute;
@@ -27,23 +24,24 @@
 </head>
 
 <body>
-	<div id="app" class="text-white font-av py-2 px-2 ">
-		<div id="loader">
-			<p>Loading...</p>
+	<div id="app" class="text-white font-av py-2 px-2 bg-sdark w-screen h-screen">
+		<div id="loader" class="grid justify-items-stretch h-screen">
+		
+			<div class="justify-self-center h-screen">SpinThree Editor crée par Maxime Benamara</div>
 		</div>
 	
 		<div class="hidden grid grid-cols-6 " id="page">
 			
 			<div class="">
-				<h1 class="text-5xl ">ThreeJs Editor </h1>
-				<div class="absolute bottom-0 ">
+				<h1 class="text-5xl ">SpinThree </h1>
+				<div class="absolute top-0 right-0">
 					{{version}}
 				</div>
-				<div>
-					<label for="">
+				<div class="pt-3">
+					<label for="" class="uppercase">
 						Loaded:
-						<input class="text-black" type="text" id="modelloaded" v-bind:value="model_loaded" >
-						<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold" @click="changeModel" >RESET</button>
+						<input class="text-black rounded-md" type="text" id="modelloaded" v-bind:value="model_loaded" >
+						<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold rounded-3xl uppercase" @click="changeModel" >RESET</button>
 	
 					</label>
 			
@@ -51,20 +49,23 @@
 				<div v-if="page == 0" class="">				
 	
 					<div v-if="camera">
-						<h2 class="text-3xl text-red py-5">Caméra:</h2>
-						<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold" @click="resetCamera">RESET</button>
+						<div class="bg-blueb text-white font-av" >
+  <h2 class="text-3xl text-red py-7 uppercase">Camera:</h2>
+						<button class="mb-5 p-1 text-black bg-white bg-swhite font-av font-bold rounded-3xl " @click="resetCamera">RESET</button>
 						<div id="jsonrender">
-							<label for="">Duration: <input type="number" value="5" id="gsapduration" placeholder="5" class="text-black"></label>
+							<label for="" class="uppercase font-semibold">Duration: <input type="number" value="5" id="gsapduration" placeholder="5" class="text-black rounded-md pl-1 w-10 font-extrabold"></label>
 							<br>
-							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold" @click="addGSAPMove">ADD TO GSAPMOVE</button>
-							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold" @click="convertGSAPMove" >CONVERT GSAPMOVE</button>
-							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold" @click="resetGSAPMove" >reset GSAPMOVE</button>
+							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold bg-white rounded-3xl uppercase" @click="addGSAPMove">ADD TO GSAPMOVE</button>
+							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold bg-white rounded-3xl uppercase" @click="convertGSAPMove" >CONVERT GSAPMOVE</button>
+							<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold bg-white rounded-3xl uppercase" @click="resetGSAPMove" >reset GSAPMOVE</button>
 							<br>
 							<code id="gsaprender" style="margin-bottom:10px">
 								<br>
 							</code>
 							<ul v-if="gsapMovers != null">
-								<li v-for="gsap in gsapMovers">{{gsap}}</li>
+								<li v-for="gsap in gsapMovers">
+									
+								</li>
 							</ul>
 						</div>
 						<div class="py-0">
@@ -88,9 +89,8 @@
 											v-bind:value="camera.position.z" step="0.1" @change="setCamera"> </label>
 								</div>
 							</div>
-							<code>camera.position.x = {{camera.position.x}} <br> camera.position.y = {{camera.position.y}} <br>
-								camera.position.z = {{camera.position.z}}</code>
 						</div>
+</div>
 						<div class="pt-3">
 							<h2 class="text">Rotation:</h2>
 							<div class="flex space-x-5">
@@ -112,8 +112,6 @@
 											v-bind:value="camera.rotation.z" step="0.1" @change="setCameraR"> </label>
 								</div>
 							</div>
-							<code>camera.rotation.x = {{camera.rotation.x}} <br> camera.rotation.y = {{camera.rotation.y}} <br>
-								camera.rotation.z = {{camera.rotation.z}}</code>
 		
 						</div>
 					</div>
@@ -417,7 +415,7 @@
 					const _model = document.getElementById("modelloaded")
 					app.model_loaded = _model.value;
 					scene.remove.apply(scene, scene.children);
-
+					app.objectree = [];
 					loadModel();
 				},
 				setMenu(number){
@@ -511,8 +509,9 @@
 		function loadModel(){
 			loader.load( app.model_loaded, function ( gltf ) {
 
-	
-
+				const color2 = new THREE.Color( 0xffffff );
+				scene.background = color2;
+				
 				const light = new THREE.AmbientLight( 0xffffff, 1 ); // soft white light
 				scene.add( light );
 
@@ -535,7 +534,8 @@
 				
 				scene.add( model );
 
-
+					$('#jstree').jstree("destroy");
+				app.objectree = [];
 				const data = [];
 				scene.traverse( ( object ) => {
 					if(!object.isMesh){
@@ -544,8 +544,8 @@
 				} );
 
 				setTimeout(() => {
+					
 					$('#jstree').jstree();
-
 					$('#jstree').on("changed.jstree", function (e, data) {
 						console.log(e, data.selected);
 						app.loadedObject = scene.getObjectById( parseInt(data.selected), true );
@@ -592,9 +592,6 @@
 		camera.position.y = 1.2;
 		camera.position.x = 0;
 		
-		controls = new OrbitControls( camera, renderer.domElement );
-		controls.update();
-		
 		const animate = function () {
 
 			app.scene = scene;
@@ -606,7 +603,6 @@
 			var delta = clock.getDelta();
 			if (mixer) mixer.update(delta);
 	
-			controls.update();
 
 			renderer.render( scene, camera );
 		};
