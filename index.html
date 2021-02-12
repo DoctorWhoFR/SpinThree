@@ -487,22 +487,20 @@
 		renderer.setSize( window.innerWidth - 800, window.innerHeight - 80 );
 		renderer.outputEncoding = THREE.sRGBEncoding;
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
-
 		renderer.physicallyCorrectLights = true;
-		const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
 
 
 		test.appendChild( renderer.domElement );
 		
 		
 		
-		const loader = new GLTFLoader();
+			const loader = new GLTFLoader();
 			// Optional: Provide a DRACOLoader instance to decode compressed mesh data
 			const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+			dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 
-      const modelLoader = new GLTFLoader();
-      modelLoader.setDRACOLoader(dracoLoader);
+			const modelLoader = new GLTFLoader();
+			loader.setDRACOLoader(dracoLoader);
 		  /**
 		  
 		  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>
@@ -515,7 +513,7 @@
 
 	
 
-				const light = new THREE.AmbientLight( 0xffffff, 0.7 ); // soft white light
+				const light = new THREE.AmbientLight( 0xffffff, 1 ); // soft white light
 				scene.add( light );
 
 				lightd = new THREE.PointLight( 0xffffff, 0.8, 100 );
@@ -526,6 +524,15 @@
 				object_scene = gltf;
 				model = gltf.scene
 				app.data_scenes = gltf
+				
+				gltf.scene.traverse(function (child) {
+					if (child.isMesh) {
+						child.material.depthWrite = true;
+						child.material.depthTest = true;
+					}
+				});				
+				
+				
 				scene.add( model );
 
 
@@ -585,6 +592,8 @@
 		camera.position.y = 1.2;
 		camera.position.x = 0;
 		
+		controls = new OrbitControls( camera, renderer.domElement );
+		controls.update();
 		
 		const animate = function () {
 
@@ -597,7 +606,7 @@
 			var delta = clock.getDelta();
 			if (mixer) mixer.update(delta);
 	
-
+			controls.update();
 
 			renderer.render( scene, camera );
 		};
