@@ -5,8 +5,8 @@
 @font-face {
   font-family: 'Cera Pro';
 
-  src: url('../fonts/CeraPro-BlackItalic.woff2') format('woff2'),
-        url('../fonts/CeraPro-BlackItalic.woff') format('woff');
+  src: url('fonts/CeraPro-BlackItalic.woff2') format('woff2'),
+        url('fonts/CeraPro-BlackItalic.woff') format('woff');
 
   font-weight: 900;
 
@@ -18,8 +18,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Black.woff2') format('woff2'),
-        url('../fonts/CeraPro-Black.woff') format('woff');
+  src: url('fonts/CeraPro-Black.woff2') format('woff2'),
+        url('fonts/CeraPro-Black.woff') format('woff');
 
   font-weight: 900;
 
@@ -31,8 +31,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-BoldItalic.woff2') format('woff2'),
-        url('../fonts/CeraPro-BoldItalic.woff') format('woff');
+  src: url('fonts/CeraPro-BoldItalic.woff2') format('woff2'),
+        url('fonts/CeraPro-BoldItalic.woff') format('woff');
 
   font-weight: bold;
 
@@ -44,8 +44,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Light.woff2') format('woff2'),
-        url('../fonts/CeraPro-Light.woff') format('woff');
+  src: url('fonts/CeraPro-Light.woff2') format('woff2'),
+        url('fonts/CeraPro-Light.woff') format('woff');
 
   font-weight: 300;
 
@@ -57,8 +57,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Bold.woff2') format('woff2'),
-        url('../fonts/CeraPro-Bold.woff') format('woff');
+  src: url('fonts/CeraPro-Bold.woff2') format('woff2'),
+        url('fonts/CeraPro-Bold.woff') format('woff');
 
   font-weight: bold;
 
@@ -70,8 +70,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Medium.woff2') format('woff2'),
-        url('../fonts/CeraPro-Medium.woff') format('woff');
+  src: url('fonts/CeraPro-Medium.woff2') format('woff2'),
+        url('fonts/CeraPro-Medium.woff') format('woff');
 
   font-weight: 500;
 
@@ -83,8 +83,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-LightItalic.woff2') format('woff2'),
-        url('../fonts/CeraPro-LightItalic.woff') format('woff');
+  src: url('fonts/CeraPro-LightItalic.woff2') format('woff2'),
+        url('fonts/CeraPro-LightItalic.woff') format('woff');
 
   font-weight: 300;
 
@@ -96,8 +96,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-MediumItalic.woff2') format('woff2'),
-        url('../fonts/CeraPro-MediumItalic.woff') format('woff');
+  src: url('fonts/CeraPro-MediumItalic.woff2') format('woff2'),
+        url('fonts/CeraPro-MediumItalic.woff') format('woff');
 
   font-weight: 500;
 
@@ -109,8 +109,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-ThinItalic.woff2') format('woff2'),
-        url('../fonts/CeraPro-ThinItalic.woff') format('woff');
+  src: url('fonts/CeraPro-ThinItalic.woff2') format('woff2'),
+        url('fonts/CeraPro-ThinItalic.woff') format('woff');
 
   font-weight: 100;
 
@@ -122,8 +122,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Italic.woff2') format('woff2'),
-        url('../fonts/CeraPro-Italic.woff') format('woff');
+  src: url('fonts/CeraPro-Italic.woff2') format('woff2'),
+        url('fonts/CeraPro-Italic.woff') format('woff');
 
   font-weight: normal;
 
@@ -135,8 +135,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Thin.woff2') format('woff2'),
-        url('../fonts/CeraPro-Thin.woff') format('woff');
+  src: url('fonts/CeraPro-Thin.woff2') format('woff2'),
+        url('fonts/CeraPro-Thin.woff') format('woff');
 
   font-weight: 100;
 
@@ -148,8 +148,8 @@
 @font-face {
   font-family: 'CeraPro';
 
-  src: url('../fonts/CeraPro-Regular.woff2') format('woff2'),
-        url('../fonts/CeraPro-Regular.woff') format('woff');
+  src: url('fonts/CeraPro-Regular.woff2') format('woff2'),
+        url('fonts/CeraPro-Regular.woff') format('woff');
 
   font-weight: normal;
 
@@ -161,13 +161,13 @@
 @font-face {
   font-family: 'Stolzl';
 
-  src: url('../fonts/Stolzl/Stolzl-Light.eot');
+  src: url('fonts/Stolzl/Stolzl-Light.eot');
 
   src: local('Stolzl Light'), local('Stolzl-Light'),
-        url('../fonts/Stolzl/Stolzl-Light.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Light.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Light.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Light.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Light.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Light.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Light.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Light.ttf') format('truetype');
 
   font-weight: 300;
 
@@ -177,13 +177,13 @@
 @font-face {
   font-family: 'Stolzl';
 
-  src: url('../fonts/Stolzl/Stolzl-Thin.eot');
+  src: url('fonts/Stolzl/Stolzl-Thin.eot');
 
   src: local('Stolzl Thin'), local('Stolzl-Thin'),
-        url('../fonts/Stolzl/Stolzl-Thin.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Thin.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Thin.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Thin.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Thin.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Thin.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Thin.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Thin.ttf') format('truetype');
 
   font-weight: 100;
 
@@ -193,13 +193,13 @@
 @font-face {
   font-family: 'Stolzl Book';
 
-  src: url('../fonts/Stolzl/Stolzl-Book.eot');
+  src: url('fonts/Stolzl/Stolzl-Book.eot');
 
   src: local('Stolzl Book'), local('Stolzl-Book'),
-        url('../fonts/Stolzl/Stolzl-Book.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Book.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Book.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Book.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Book.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Book.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Book.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Book.ttf') format('truetype');
 
   font-weight: normal;
 
@@ -209,13 +209,13 @@
 @font-face {
   font-family: 'Stolzl';
 
-  src: url('../fonts/Stolzl/Stolzl-Regular.eot');
+  src: url('fonts/Stolzl/Stolzl-Regular.eot');
 
   src: local('Stolzl Regular'), local('Stolzl-Regular'),
-        url('../fonts/Stolzl/Stolzl-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Regular.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Regular.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Regular.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Regular.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Regular.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Regular.ttf') format('truetype');
 
   font-weight: normal;
 
@@ -225,13 +225,13 @@
 @font-face {
   font-family: 'Stolzl';
 
-  src: url('../fonts/Stolzl/Stolzl-Bold.eot');
+  src: url('fonts/Stolzl/Stolzl-Bold.eot');
 
   src: local('Stolzl Bold'), local('Stolzl-Bold'),
-        url('../fonts/Stolzl/Stolzl-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Bold.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Bold.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Bold.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Bold.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Bold.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Bold.ttf') format('truetype');
 
   font-weight: bold;
 
@@ -241,13 +241,13 @@
 @font-face {
   font-family: 'Stolzl';
 
-  src: url('../fonts/Stolzl/Stolzl-Medium.eot');
+  src: url('fonts/Stolzl/Stolzl-Medium.eot');
 
   src: local('Stolzl Medium'), local('Stolzl-Medium'),
-        url('../fonts/Stolzl/Stolzl-Medium.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Stolzl/Stolzl-Medium.woff2') format('woff2'),
-        url('../fonts/Stolzl/Stolzl-Medium.woff') format('woff'),
-        url('../fonts/Stolzl/Stolzl-Medium.ttf') format('truetype');
+        url('fonts/Stolzl/Stolzl-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Stolzl/Stolzl-Medium.woff2') format('woff2'),
+        url('fonts/Stolzl/Stolzl-Medium.woff') format('woff'),
+        url('fonts/Stolzl/Stolzl-Medium.ttf') format('truetype');
 
   font-weight: 500;
 

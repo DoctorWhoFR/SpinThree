@@ -9,6 +9,11 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 	<style>
+		body {
+			height: 3000px;
+			font-family: "Stolzl";
+			font-weight:800;
+		}
 
 		.test {
 			position: absolute;
@@ -19,12 +24,28 @@
 		canvas {
 			width: calc(1920px - 53%);
 			height: 969px;
+			border-radius: 10px;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="app" class="text-white font-av py-2 px-2 bg-sdark w-screen h-screen">
+	<div>
+		<nav class="bg-sblue h-12 py-0">
+			<div>
+				<div class="flex ">
+					<img src="logo-Spin-corps-png-blanc.png" class="w-13 h-10 pl-2 pt-2" alt="">
+					<p class="pt-3 pl-4 text-xl font-poppins font-extrabold text-white">SPINCORPS</p>
+				</div>
+				<div>
+					
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div id="app" class="text-white  font-av py-2 px-2 bg-sdark w-screen h-full bg-contain">
+	
+		
 		<div id="loader" class="grid justify-items-stretch h-screen">
 		
 			<div class="justify-self-center h-screen">SpinThree Editor crée par Maxime Benamara</div>
@@ -34,14 +55,14 @@
 			
 			<div class="">
 				<h1 class="text-5xl ">SpinThree </h1>
-				<div class="absolute top-0 right-0">
+				<div class="absolute bottom-0 right-0">
 					{{version}}
 				</div>
 				<div class="pt-3">
 					<label for="" class="uppercase">
 						Loaded:
 						<input class="text-black rounded-md" type="text" id="modelloaded" v-bind:value="model_loaded" >
-						<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold rounded-3xl uppercase" @click="changeModel" >RESET</button>
+						<button class="mt-2 mb-5 p-3 text-black bg-swhite font-av font-bold rounded-3xl uppercase" @click="changeModel" >LOAD</button>
 	
 					</label>
 			
@@ -62,7 +83,7 @@
 							<code id="gsaprender" style="margin-bottom:10px">
 								<br>
 							</code>
-							<ul v-if="gsapMovers != null">
+							<ul >
 								<li v-for="gsap in gsapMovers">
 									
 								</li>
@@ -276,13 +297,6 @@
 				
 			</div>
 
-			<div class="absolute top-0 right-20" id="jstree">
-				<ul>
-					<li v-for="obj in objectree" v-bind:id="obj.id">{{obj.name}}
-					</li>
-					<li>Root node 2</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 
@@ -302,7 +316,7 @@
 				scene: null,
 				camera: null,
 				version: '0.1 ALPHA',
-				model_loaded: "spacehouse/scene.gltf",
+				model_loaded: "gaming_laptop/scene.gltf",
 				obj: null,
 				page: 0,
 				past_page: 0,
@@ -442,7 +456,8 @@
 					var _cam = {x: camera.position.x, y: camera.position.y, z: camera.position.z}
 					var _rotation = {x: camera.rotation.x, y: camera.rotation.y, z: camera.rotation.z}
 
-					app.gsapMovers.push({position: _cam, rotation: _rotation})
+					this.gsapMovers.push({position: _cam, rotation: _rotation})
+					console.log(this.gsapMovers)
 					console.log(gsapMovers)
 				},
 				convertGSAPMove(){
@@ -482,11 +497,11 @@
 		const test = document.getElementById("test")
 
 		const renderer = new THREE.WebGLRenderer({ antialias: true });
-		renderer.setSize( window.innerWidth - 800, window.innerHeight - 80 );
+		renderer.setSize( window.innerWidth - 500, window.innerHeight - 80 );
 		renderer.outputEncoding = THREE.sRGBEncoding;
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		renderer.physicallyCorrectLights = true;
-
+		
 
 		test.appendChild( renderer.domElement );
 		
@@ -528,37 +543,56 @@
 					if (child.isMesh) {
 						child.material.depthWrite = true;
 						child.material.depthTest = true;
+					} else {
+						
 					}
 				});				
 				
-				
+				scene.updateMatrixWorld()
+
 				scene.add( model );
 
 					$('#jstree').jstree("destroy");
-				app.objectree = [];
+				var objectree = [];
 				const data = [];
-				scene.traverse( ( object ) => {
+				gltf.scene.traverse( ( object ) => {
 					if(!object.isMesh){
-						app.objectree.push(object)
+						if(objectree.length == 0){
+							objectree[gltf.scene.name] = gltf.scene;
+						} else {
+						
+							objectree[object.parent.name][object.id] = object;
+						}
+						
 					}
 				} );
-
+				var _testobj = scene.getObjectById(10, true);
+				if(_testobj != null){
+					gsap.to(_testobj.rotation, {z: "+=-1.8", duration: 3, delay:2,  progress:"0%" ,scrollTrigger: {trigger:"#app", scrub:true,start:"top center", end:"1000px", markers:true}})
+				//gsap.to(_testobj.rotation, {z: "-=-1.8", duration: 3, delay:8})
+				console.log(_testobj)
+				}
+				
 				setTimeout(() => {
 					
-					$('#jstree').jstree();
+					$('#jstree').jstree({ 'core' : {
+						'data' : [
+						   gltf.scene
+						]
+					} });
 					$('#jstree').on("changed.jstree", function (e, data) {
-						console.log(e, data.selected);
-						app.loadedObject = scene.getObjectById( parseInt(data.selected), true );
-						console.log(app.loadedObject)
-						var _wposition = app.loadedObject.getWorldPosition(app.loadedObject.position); 
-						console.log(_wposition)
-						camera.position.x = _wposition.x;
-						camera.position.y = _wposition.y;
-						camera.position.z = _wposition.z;
-
-
+						console.log()
+						var object = scene.getObjectById( parseInt(data.selected[0]), true );
+						var target = new THREE.Vector3();
+						object.updateMatrixWorld()
+						var pos = object.getWorldPosition(target)
+						camera.position.x = target.x
+						camera.position.y = target.y
+						camera.position.z = target.z
 					});
 				}, 1000);
+				
+				console.log(gltf.scene)
 
 			mixer = new THREE.AnimationMixer(model);
 
@@ -577,6 +611,15 @@
 
 				}, 1000)
 
+			
+gltf.scene.position.x = 0;
+gltf.scene.position.y = 0;
+gltf.scene.position.z = 5.1;
+
+gltf.scene.rotation.x = 0;
+gltf.scene.rotation.y = -1.6;
+gltf.scene.rotation.z = 0; 
+
 			}, function ( xhr ) {
 				console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 			}, function ( error ) {
@@ -591,6 +634,9 @@
 		camera.position.z = 9;
 		camera.position.y = 1.2;
 		camera.position.x = 0;
+
+		
+		
 		
 		const animate = function () {
 
